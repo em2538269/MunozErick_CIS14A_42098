@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Paycheck</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="CSE HTML Validator (https://www.htmlvalidator.com/)">
+</head>
+
+<body>
+	<h1>Paycheck Calculator:</h1>
+	<br>
+	<script>
+		//Declare Variables
+		var hoursWorked; 
+		hoursWorked= prompt("Enter how many hours worked:","");//hours worked
+		var payRate = prompt("Enter your hourly pay rate:");//Pay Rate
+		var payCheck;//Initialized to zero 
+		
+		//Calculate the paycheck and determine any overtime due
+		payCheck=(hoursWorked<=20)?(hoursWorked*payRate):
+			  (hoursWorked<=40)?((20*payRate)+((hoursWorked-20)*payRate*2)):
+			  ((20*payRate)+(20*payRate*2)+((hoursWorked-40)*payRate*3));
+		
+		//Output the inputs and the calculation
+		var str="<h2>Hours Worked= "+hoursWorked+"</h2>";
+		str+="<h2>Pay Rate= $"+payRate+"/hr</h2>";
+		str+="<h2>Pay Check= $"+payCheck+"</h2>";
+			document.write(str);
+	</script>
+</body>
+</html>

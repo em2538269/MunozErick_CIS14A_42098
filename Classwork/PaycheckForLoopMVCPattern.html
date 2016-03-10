@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title></title>
+	<title>Pay CheckMVC</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="generator" content="CSE HTML Validator (https://www.htmlvalidator.com/)">
 </head>
@@ -12,8 +12,8 @@
 		var hrLimit=60;//hours per week limit
 		var payRate=10;//Pay rate in $'s/hr
 		var ovrtime=40;//Hour at which double time occurs
-		var payChk = [];//Pay check array
-		var hours = [];//declare the hours array
+		var payChk=[];//Pay check array
+		var hours=[];//declare the hours array
 		
 		//Output the inputs and the calculation
 		var str=   "<h1>Pay Rate = $"+payRate+" $'s/hr</h1>";
@@ -24,18 +24,17 @@
 		for(var hrsWrkd=0, row=0;hrsWrkd<=hrLimit;hrsWrkd++, row++){
 			//calculate the paycheck
 			payChk[row]=(hrsWrkd<ovrtime)?
-			hrsWrkd*payRate:
-			ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);
+				hrsWrkd*payRate:
+				ovrtime*payRate+2*payRate*(hrsWrkd-ovrtime);
 			hours[row]=hrsWrkd;
-		}
+		};
 		
 		//Table Heading
 		str='<table border="1" style = "width:auto">';
-		str+="<tr><th>Hours</th><th>Pay Check $</th></tr>"
+		str+="<tr><th>Hours</th><th>Pay Check $</th></tr>";
 		
 		//Calculate the Paycheck and determine any overtime due
 		for(var row=0;row<hours.length;row++){
-            //Output the calculation
             str+="<tr>";
             str+="<td><center>"+hours[row].tofixed(2)+"</center></td>";
             str+="<td><center>"+payChk[row].tofixed(2)+"</center></td>";

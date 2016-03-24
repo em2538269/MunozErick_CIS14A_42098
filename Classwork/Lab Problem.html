@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="CSE HTML Validator (https://www.htmlvalidator.com/)">
+</head>
+
+<body>
+	<form action="Lab Problem.html" method="GET">
+   		<div>Present Value:<input type="text" name="Dollars"></div></br>
+   		<div>Interest Rate:<input type="text" name="Percentage"></div></br>
+   		<div>Compounding Periods<input type="text" name="Years"></div></br>
+   		<input type="submit">
+   </form>
+   
+   <script type="text/javascript">
+     //Take the URL in the Window
+     var url=window.location.href;
+     
+     //Split the URL and the important information is in the 2nd half
+     var info=url.split("?");
+
+     //Place name value pairs into an array
+     var nameValuePairs=info[1].split("&");
+     object=new Object();
+     for(var i=0;i<nameValuePairs.length;i++){
+         var map=nameValuePairs[i].toString().split("=");
+         var name =map[0];
+         var value=map[1];
+         object[name]=value;
+     }
+     //function to calculate interest
+     function calcInterest(pValue, interest, n){
+			return (pValue*Math.pow((1+interest),n));
+     //display inputs
+     var str="";
+     for(var name in object){
+     	str+=("<h2>"+name+"="+object[name]+"</h2>");
+     }
+     document.write(str);
+     
+     var calcs = [];
+     for (var step=0;step<3;step++){
+     	for (var name in object){
+     	calcs[step]=object[name];
+     	}
+     }
+     result=calcInterest(calcs[0],calcs[1],calcs[2])
+     str+=("<h3>"+result+"</h3>");
+     document.write(str);
+   </script>
+</body>
+</html>
